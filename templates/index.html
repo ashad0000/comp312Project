@@ -1,59 +1,139 @@
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Haircut Booking</title>
+{% extends "base.html" %}
+{% set active = 'home' %}
+{% block title %}Home — Haircut Booking{% endblock %}
 
-    <!-- Link to your CSS -->
-    <link rel="stylesheet" href="../styles/style.css" />
+{% block content %}
 
-    <!-- Simple comments help teammates understand -->
-    <!-- This is the main UI for booking a haircut -->
-  </head>
+<!-- HERO SECTION -->
+<header class="hero">
+  <h1>Book Your Next Haircut</h1>
+  <p>Choose a barber and schedule your appointment easily.</p>
+</header>
 
-  <body>
-    <header>
-      <h1>Book Your Next Haircut</h1>
-      <p>Choose a barber and schedule your appointment easily.</p>
-    </header>
+<!-- MAIN PROVIDERS SECTION -->
+<section class="providers section">
+  <h2 class="section-title">Available Barbers</h2>
 
-    <!-- Main container -->
-    <section class="providers">
-      <h2>Available Barbers</h2>
-      <div class="card">
-        <h3>Fade Factory</h3>
-        <p>123 Main Street</p>
-        <button onclick="selectProvider('Fade Factory')">Book Now</button>
-      </div>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Fade Factory</h3>
+      <p>123 Main Street</p>
+      <button class="btn btn-primary btn-full" onclick="selectProvider('Fade Factory')">
+        Book Now
+      </button>
+    </div>
 
-      <div class="card">
-        <h3>Clip & Clean</h3>
-        <p>456 Oak Avenue</p>
-        <button onclick="selectProvider('Clip & Clean')">Book Now</button>
-      </div>
-    </section>
+    <div class="card">
+      <h3>Clip & Clean</h3>
+      <p>456 Oak Avenue</p>
+      <button class="btn btn-primary btn-full" onclick="selectProvider('Clip & Clean')">
+        Book Now
+      </button>
+    </div>
+  </div>
+</section>
 
-    <!-- Booking form section -->
-    <section id="booking" class="hidden">
-      <h2 id="selected-barber"></h2>
-      <form>
-        <label>Date:
-          <input type="date" id="date" required />
-        </label>
-        <label>Time:
-          <input type="time" id="time" required />
-        </label>
-        <button type="submit">Confirm Booking</button>
-      </form>
-    </section>
+<!-- BOOKING FORM (HIDDEN UNTIL BARBER SELECTED) -->
+<section id="booking" class="hidden section section-light">
+  <h2 id="selected-barber" class="section-title"></h2>
+  <form class="form">
+    <label>Date:
+      <input type="date" id="date" required />
+    </label>
+    <label>Time:
+      <input type="time" id="time" required />
+    </label>
+    <button type="submit" class="btn btn-primary btn-full">Confirm Booking</button>
+  </form>
+</section>
 
-    <footer>
-      <p>© 2025 Haircut Booker</p>
-    </footer>
+<!-- EXTRA UI SECTIONS (LOOKS NICER) -->
+<section class="section">
+  <h2 class="section-title">Popular Services</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3>Classic Cut</h3>
+      <p class="card-text">Clean fade or trim with line-up.</p>
+      <p class="card-meta">30 min • $25</p>
+      <button class="btn btn-outline btn-full">View details</button>
+    </div>
 
-    <!-- Connect your JS -->
-    <script src="../scripts/index.js"></script>
-  </body>
-</html>
+    <div class="card">
+      <h3>Premium Cut + Beard</h3>
+      <p class="card-text">Haircut, beard shaping, and hot towel.</p>
+      <p class="card-meta">45–60 min • $40</p>
+      <button class="btn btn-outline btn-full">View details</button>
+    </div>
+
+    <div class="card">
+      <h3>Student Special</h3>
+      <p class="card-text">Discounted cuts for students with ID.</p>
+      <p class="card-meta">30 min • $20</p>
+      <button class="btn btn-outline btn-full">View details</button>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-light">
+  <h2 class="section-title">How It Works</h2>
+
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h3>Search</h3>
+      <p>Find the barber that matches your style.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">2</div>
+      <h3>Select</h3>
+      <p>Choose your service and available time.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-number">3</div>
+      <h3>Show Up</h3>
+      <p>Skip the wait and get a fresh cut.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <h2 class="section-title">What Clients Say</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <p class="testimonial-text">
+        “Easiest way to book a cut. Super quick and clean UI.”
+      </p>
+      <p class="testimonial-name">— Jason</p>
+    </div>
+
+    <div class="testimonial">
+      <p class="testimonial-text">
+        “I don’t wait around anymore — this app saves me time.”
+      </p>
+      <p class="testimonial-name">— Sarah</p>
+    </div>
+
+    <div class="testimonial">
+      <p class="testimonial-text">
+        “I just pick a time and show up. Love it.”
+      </p>
+      <p class="testimonial-name">— Ahmed</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-brand">FreshBooker</p>
+    <p class="footer-text">Prototype for COMP 312 — Demo Only</p>
+    <p class="footer-text">Built by Team Abdul 💈</p>
+  </div>
+</footer>
+
+{% endblock %}
